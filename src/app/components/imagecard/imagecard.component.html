@@ -1,8 +1,9 @@
+<div class="d-flex justify-content-center">
 <div class="card-group">
  <div *ngFor="let item of bordados">
-        {{item|json}}
+  {{item|json}}
   <div class="card">
-    <img class="card-img-top" [attr.src]=http://laravel.example.com/{{item.path}} alt="Card image cap">
+    <img class="card-img-top" src="http://laravel.example.com{{item.path}}" alt="Card image cap">
     <div class="card-block">
       <h4 class="card-title">{{item.name}}</h4>
       <p class="card-text">{{item.description}}</p>
@@ -10,4 +11,5 @@
     </div>
   </div>
   </div>
+ </div>
  </div>
