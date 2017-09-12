@@ -5,16 +5,22 @@ import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { ImagecardComponent } from './components/imagecard/imagecard.component';
 import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { AlertModule,CollapseModule } from 'ngx-bootstrap';
+
 @NgModule({
   declarations: [
     AppComponent,
-    ImagecardComponent
+    ImagecardComponent,
+    NavbarComponent,
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpModule,
-    NgbModule
+    NgbModule,
+    AlertModule.forRoot(),
+    CollapseModule
   ],
 
   bootstrap: [AppComponent]
