@@ -6,19 +6,23 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class LoginService {
   private loginUrl= 'http://laravel.example.com/api/login';
+  private registerUrl= 'http://laravel.example.com/api/register';
   constructor(private http:Http) { }
 
 
- Login(email: string, password: string){
- 	 var headers = new Headers();
- 	let bs64 = btoa(email+':'+password);
-    headers.append('Authorization','Basic '+bs64);
-    let options = new RequestOptions({ headers: headers });
-
-
-    return this.http.get(this.loginUrl,options)
+ Login(data){
+ 	  let headers = new Headers({ 'Accept': 'application/json' });
+     let options = new RequestOptions({ headers: headers });
+    return this.http.post(this.loginUrl,data,options)
                      .map(resp => resp.json() );
  }
+ register(data){
+     let headers = new Headers({ 'Accept': 'application/json' });
+     let options = new RequestOptions({ headers: headers });
+     return this.http.post(this.registerUrl,data,options)
+                     .map(resp=>resp.json())
+                      }
+
  get(url:string, hdrs?:Object) {
 		let headers = new Headers();
 		if( hdrs )

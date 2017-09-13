@@ -1,14 +1,13 @@
+
 #playground-container {
     height: 500px;
     overflow: hidden !important;
     -webkit-overflow-scrolling: touch;
 }
 body, html{
+    background-color: #b54545 ;
      height: 100%;
- 	background-repeat: no-repeat;
- 	background:url(https://i.ytimg.com/vi/4kfXjatgeEU/maxresdefault.jpg);
- 	font-family: 'Oxygen', sans-serif;
-	    background-size: cover;
+     font-family: 'Oxygen', sans-serif;
 }
 
 .main{

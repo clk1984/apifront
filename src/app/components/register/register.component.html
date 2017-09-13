@@ -2,23 +2,15 @@
   <div class="row main">
     <div class="main-login main-center">
       <h5>Sign up once and watch any of our free demos.</h5>
-      <form class="" method="post" action="#">
-        <div class="form-group">
-          <label for="name" class="cols-sm-2 control-label">Your Name</label>
-          <div class="cols-sm-10">
-            <div class="input-group">
-              <span class="input-group-addon"><i class="fa fa-user fa" aria-hidden="true"></i></span>
-              <input type="text" class="form-control" name="name" id="name" placeholder="Enter your Name" />
-            </div>
-          </div>
-        </div>
-        <div class="form-group">
+      <form validate (ngSubmit)="submitRegister(registerForm.value)" [formGroup]="registerForm" class="" >
+             <div class="form-group">
           <label for="email" class="cols-sm-2 control-label">Your Email</label>
           <div class="cols-sm-10">
             <div class="input-group">
               <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
-              <input type="text" class="form-control" name="email" id="email" placeholder="Enter your Email" />
+              <input type="text" class="form-control" name="email" id="email" email placeholder="Enter your Email" [ngClass]="{'form-control-danger':!registerForm.controls['email'].valid && registerForm.controls['email'].touched}" [formControl]="registerForm.controls['email']"/>
             </div>
+            <div *ngIf="!registerForm.controls['email'].valid && registerForm.controls['email'].touched" class="text-danger">Mail invalido</div>
           </div>
         </div>
         <div class="form-group">
@@ -26,17 +18,20 @@
           <div class="cols-sm-10">
             <div class="input-group">
               <span class="input-group-addon"><i class="fa fa-users fa" aria-hidden="true"></i></span>
-              <input type="text" class="form-control" name="username" id="username" placeholder="Enter your Username" />
+              <input type="text" class="form-control" name="username" id="username" placeholder="Enter your Username" [ngClass]="{'form-control-danger':!registerForm.controls['name'].valid && registerForm.controls['name'].touched}" [formControl]="registerForm.controls['name']"/>
+
             </div>
-          </div>
         </div>
+            <div *ngIf="!registerForm.controls['name'].valid && registerForm.controls['name'].touched" class="text-danger">Username required</div>
+          </div>
         <div class="form-group">
           <label for="password" class="cols-sm-2 control-label">Password</label>
           <div class="cols-sm-10">
             <div class="input-group">
               <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-              <input type="password" class="form-control" name="password" id="password" placeholder="Enter your Password" />
+              <input type="password" class="form-control" name="password" id="password" placeholder="Enter your Password" [ngClass]="{'form-control-danger':!registerForm.controls['password'].valid && registerForm.controls['password'].touched}" [formControl]="registerForm.controls['password']"/>
             </div>
+            <div *ngIf="!registerForm.controls['password'].valid && registerForm.controls['password'].touched" class="text-danger">Contraseña requerida</div>
           </div>
         </div>
         <div class="form-group">
@@ -44,14 +39,17 @@
           <div class="cols-sm-10">
             <div class="input-group">
               <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
-              <input type="password" class="form-control" name="confirm" id="confirm" placeholder="Confirm your Password" />
+              <input type="password" class="form-control" name="confirm" id="confirm" placeholder="Confirm your Password" [ngClass]="{'form-control-danger':!registerForm.controls['c_password'].valid && registerForm.controls['c_password'].touched}" [formControl]="registerForm.controls['c_password']"/>
             </div>
+              <div class="alert alert-danger" *ngIf="registerForm.controls['c_password'].errors?.MatchPassword">Password not match</div>
+
           </div>
         </div>
+
         <div class="form-group ">
-          <a href="http://deepak646.blogspot.in" target="_blank" type="button" id="button" class="btn btn-primary btn-lg btn-block login-button">Register</a>
+          <button  type="submit" class="btn btn-primary px-2">Register</button>
         </div>
-      </form>
+</form>
     </div>
   </div>
 </div>

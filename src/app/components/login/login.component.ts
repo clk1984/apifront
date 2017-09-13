@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit,ViewEncapsulation } from '@angular/core';
 import { Router, ActivatedRoute} from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import {LoginService} from '../services/login.service';
@@ -6,11 +6,13 @@ import {LoginService} from '../services/login.service';
 
 @Component({
   templateUrl: 'login.component.html',
-  providers:[LoginService]
+  styleUrls: ['./login.component.css'],
+  providers:[LoginService],
+  encapsulation: ViewEncapsulation.None
 })
 export class LoginComponent {
 
-  loginform : FormGroup;
+  loginForm : FormGroup;
   datas:string[];
   constructor(
                 public fb: FormBuilder,
@@ -19,8 +21,8 @@ export class LoginComponent {
                 private loginService : LoginService,
               ) {
 
-    this.loginform = fb.group({
-      'user' : [null, Validators.required],
+    this.loginForm = fb.group({
+      'email' : [null, Validators.required],
       'password' : [null, Validators.required]
     });
 
@@ -29,14 +31,13 @@ export class LoginComponent {
   }
 
   submitLogin(value: any){
-    this.loginService.Login(value.user,value.password)
+    this.loginService.Login(value)
         .subscribe(data=>{
           console.log(data)
-         data.token = btoa(value.user+':'+value.password)
-               window.localStorage.setItem('user',JSON.stringify(data));
-               window.localStorage.setItem('nombre',data.nombre );
-                 setTimeout(() => {
-                   this._router.navigate(['/dashboard']);
+           window.localStorage.setItem('user',data.success.name);
+           window.localStorage.setItem('token',data.success.token );
+                setTimeout(() => {
+                   this._router.navigate(['/cards']);
                  },500);
         },err =>{
                 if(err.status == 404 || err.status == 401)

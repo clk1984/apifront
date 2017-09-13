@@ -1,39 +1,34 @@
-<div class="app flex-row align-items-center">
-
-    <div class="container" style="opacity: 0.9;">
-        <div class="row justify-content-center">
-            <div class="col-md-5">
-                <div class="card-group mb-0">
-                    <div class="card p-2">
-                        <div class="card-block">
-                            <form validate (ngSubmit)="submitLogin(loginform.value)" [formGroup]="loginform" >
-                                <img style="max-width:400px; width:80%; margin:0px auto;" src="assets/img/logo.png" />
-                                <p class="text-muted mt-1">Entra a la plataforma</p>
-                                <div class="input-group" [ngClass]="{'has-danger':!loginform.controls['user'].valid && loginform.controls['user'].touched}">
-                                    <span class="input-group-addon"><i class="icon-user"></i></span>
-                                    <input type="text" class="form-control" [ngClass]="{'form-control-danger':!loginform.controls['user'].valid && loginform.controls['user'].touched}" [formControl]="loginform.controls['user']" placeholder="Usuario">
-                                </div>
-                                <div *ngIf="!loginform.controls['user'].valid && loginform.controls['user'].touched" class="text-danger">Usuario invalido</div>
-                                <div class="input-group mt-1" [ngClass]="{'has-danger':!loginform.controls['password'].valid && loginform.controls['password'].touched}">
-                                    <span class="input-group-addon"><i class="icon-lock"></i>
-                                    </span>
-                                    <input type="password" [ngClass]="{'form-control-danger':!loginform.controls['password'].valid && loginform.controls['password'].touched}" class="form-control" placeholder="Password" [formControl]="loginform.controls['password']">
-                                </div>
-                                <div *ngIf="!loginform.controls['password'].valid && loginform.controls['password'].touched" class="text-danger">Password requerido</div>
-                                <div class="row mt-1">
-                                    <div class="col-md-6 col-sm-12">
-                                        <button  type="submit" class="btn btn-primary px-2">Entrar</button>
-                                    </div>
-                                    <!--<div class="col-md-6 col-sm-12">
-                                        <button type="button" class="btn btn-link px-0">¿Olvidaste tu password?</button>
-                                    </div>-->
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
+<div class="container">
+  <div class="row main">
+    <div class="main-login main-center">
+      <h5>Sign up once and watch any of our free demos.</h5>
+      <form  (ngSubmit)="submitLogin(loginForm.value)" [formGroup]="loginForm" class="" >
+             <div class="form-group">
+          <label for="email" class="cols-sm-2 control-label">Your Email</label>
+          <div class="cols-sm-10">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-envelope fa" aria-hidden="true"></i></span>
+              <input type="text" class="form-control" name="email" id="email" email placeholder="Enter your Email" [ngClass]="{'form-control-danger':!loginForm.controls['email'].valid && loginForm.controls['email'].touched}" [formControl]="loginForm.controls['email']"/>
             </div>
+            <div *ngIf="!loginForm.controls['email'].valid && loginForm.controls['email'].touched" class="text-danger">Mail invalido</div>
+          </div>
         </div>
-    </div>
-</div>
+        <div class="form-group">
+          <label for="password" class="cols-sm-2 control-label">Password</label>
+          <div class="cols-sm-10">
+            <div class="input-group">
+              <span class="input-group-addon"><i class="fa fa-lock fa-lg" aria-hidden="true"></i></span>
+              <input type="password" class="form-control" name="password" id="password" placeholder="Enter your Password" [ngClass]="{'form-control-danger':!loginForm.controls['password'].valid && loginForm.controls['password'].touched}" [formControl]="loginForm.controls['password']"/>
+            </div>
+            <div *ngIf="!loginForm.controls['password'].valid && loginForm.controls['password'].touched" class="text-danger">Contraseña requerida</div>
+          </div>
+        </div>
 
+        <div class="form-group ">
+          <button  type="button" routerLink="/register" routerLinkActive="active" class="btn btn-primary px-2">Register</button>
+          <button  type="submit" class="btn btn-primary px-2 pull-right">Login</button>
+        </div>
+</form>
+    </div>
+  </div>
+</div>
