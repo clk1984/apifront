@@ -1,0 +1,39 @@
+<div class="app flex-row align-items-center">
+
+    <div class="container" style="opacity: 0.9;">
+        <div class="row justify-content-center">
+            <div class="col-md-5">
+                <div class="card-group mb-0">
+                    <div class="card p-2">
+                        <div class="card-block">
+                            <form validate (ngSubmit)="submitLogin(loginform.value)" [formGroup]="loginform" >
+                                <img style="max-width:400px; width:80%; margin:0px auto;" src="assets/img/logo.png" />
+                                <p class="text-muted mt-1">Entra a la plataforma</p>
+                                <div class="input-group" [ngClass]="{'has-danger':!loginform.controls['user'].valid && loginform.controls['user'].touched}">
+                                    <span class="input-group-addon"><i class="icon-user"></i></span>
+                                    <input type="text" class="form-control" [ngClass]="{'form-control-danger':!loginform.controls['user'].valid && loginform.controls['user'].touched}" [formControl]="loginform.controls['user']" placeholder="Usuario">
+                                </div>
+                                <div *ngIf="!loginform.controls['user'].valid && loginform.controls['user'].touched" class="text-danger">Usuario invalido</div>
+                                <div class="input-group mt-1" [ngClass]="{'has-danger':!loginform.controls['password'].valid && loginform.controls['password'].touched}">
+                                    <span class="input-group-addon"><i class="icon-lock"></i>
+                                    </span>
+                                    <input type="password" [ngClass]="{'form-control-danger':!loginform.controls['password'].valid && loginform.controls['password'].touched}" class="form-control" placeholder="Password" [formControl]="loginform.controls['password']">
+                                </div>
+                                <div *ngIf="!loginform.controls['password'].valid && loginform.controls['password'].touched" class="text-danger">Password requerido</div>
+                                <div class="row mt-1">
+                                    <div class="col-md-6 col-sm-12">
+                                        <button  type="submit" class="btn btn-primary px-2">Entrar</button>
+                                    </div>
+                                    <!--<div class="col-md-6 col-sm-12">
+                                        <button type="button" class="btn btn-link px-0">¿Olvidaste tu password?</button>
+                                    </div>-->
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
