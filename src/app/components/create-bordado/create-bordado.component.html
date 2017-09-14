@@ -1,0 +1,19 @@
+<app-nav></app-nav>
+<hr>
+<div class="container">
+  <form [formGroup]="createForm" novalidate (ngSubmit)="save(createForm.value)">
+    <div class="card">
+                       <md-input-container class="w-100">
+                            <input formControlName="nombre" mdInput placeholder="Name">
+                        </md-input-container>
+                        <small *ngIf="!createForm.controls['nombre'].valid" class="text-danger">Required.
+                        </small>
+                         <md-input-container class="w-100">
+                            <input formControlName="descripcion" maxlength="140" mdInput placeholder="Descripcion del cuestionario">
+                        </md-input-container>
+                        <small *ngIf="!createForm.controls['descripcion'].valid" class="text-danger">Required.
+                        </small>
+    </div>
+
+  </form>
+</div>
