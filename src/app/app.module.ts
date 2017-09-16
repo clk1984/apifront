@@ -16,7 +16,6 @@ import { LoginComponent } from './components/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './components/register/register.component';
 import { FileSelectDirective } from 'ng2-file-upload';
-
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { AlertModule,CollapseModule } from 'ngx-bootstrap';
 import { CreateBordadoComponent } from './components/create-bordado/create-bordado.component';
@@ -49,7 +48,8 @@ import { CreateBordadoComponent } from './components/create-bordado/create-borda
     MdInputModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    ToastyModule.forRoot()
+    ToastyModule.forRoot(),
+
 
   ],
 

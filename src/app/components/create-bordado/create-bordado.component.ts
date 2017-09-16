@@ -1,7 +1,6 @@
 import { ToastyService, ToastOptions } from "ng2-toasty";
 import { NgForm } from "@angular/forms";
 import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
-
 import { Ticket } from "./../ticket";
 import { UploadFileSimpleService } from "./../services/upload-file-with-progress-bar.service";
 
@@ -17,7 +16,7 @@ export class CreateBordadoComponent implements OnInit {
 
   constructor(
     private uploadService: UploadFileSimpleService,
-    private toastyService: ToastyService
+    private toastyService: ToastyService,
   ) {}
 
   ngOnInit() {}
