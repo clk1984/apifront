@@ -1,19 +1,35 @@
 <app-nav></app-nav>
-<hr>
 <div class="container">
-  <form [formGroup]="createForm" novalidate (ngSubmit)="save(createForm.value)">
-    <div class="card">
-                       <md-input-container class="w-100">
-                            <input formControlName="nombre" mdInput placeholder="Name">
-                        </md-input-container>
-                        <small *ngIf="!createForm.controls['nombre'].valid" class="text-danger">Required.
-                        </small>
-                         <md-input-container class="w-100">
-                            <input formControlName="descripcion" maxlength="140" mdInput placeholder="Descripcion del cuestionario">
-                        </md-input-container>
-                        <small *ngIf="!createForm.controls['descripcion'].valid" class="text-danger">Required.
-                        </small>
+  <h3>Support Form (simple upload)</h3>
+  <form #form="ngForm" (submit)="submitForm(form)" novalidate>
+    <div class="form-group" [class.has-error]="name.invalid && name.touched">
+      <label class="control-label">Name</label>
+      <input #name="ngModel" required type="text" class="form-control"
+        name="description" [(ngModel)]="model.name">
+      <div *ngIf="name.invalid && name.touched">
+        <div class="alert alert-danger"  *ngIf="name.errors.required">
+          name is required.
+        </div>
+      </div>
     </div>
 
+<div class="form-group" [class.has-error]="description.invalid && description.touched">
+      <label class="control-label">Description</label>
+      <input #description="ngModel" required type="text" class="form-control"
+        name="description" [(ngModel)]="model.description">
+      <div *ngIf="description.invalid && description.touched">
+        <div class="alert alert-danger"  *ngIf="description.errors.required">
+          description is required.
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label class="control-label">Screenshot(s)</label>
+      <input #screenshotInput required type="file" multiple (change)="fileChange($event)"
+        class="form-control" name="screenshot">
+    </div>
+
+    <button class="btn btn-primary" [disabled]="form.invalid" type="submit">Submit</button>
   </form>
 </div>

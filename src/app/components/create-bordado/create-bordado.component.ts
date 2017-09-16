@@ -1,23 +1,53 @@
-import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormBuilder, Validators } from '@angular/forms';
-import {MdInputModule} from '@angular/material';
+import { ToastyService, ToastOptions } from "ng2-toasty";
+import { NgForm } from "@angular/forms";
+import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
+
+import { Ticket } from "./../ticket";
+import { UploadFileSimpleService } from "./../services/upload-file-with-progress-bar.service";
 
 @Component({
-  selector: 'app-create-bordado',
-  templateUrl: './create-bordado.component.html',
-  styleUrls: ['./create-bordado.component.css']
+  selector: "app-upload-file-simple",
+  templateUrl: "./create-bordado.component.html",
+  styleUrls: ["./create-bordado.component.css"],
+  providers:[UploadFileSimpleService]
 })
 export class CreateBordadoComponent implements OnInit {
-  createForm:FormGroup
+  @ViewChild("screenshotInput") screenshotInput: ElementRef;
+  model = new Ticket();
+
   constructor(
-      public fb:FormBuilder) {
-  this.createForm= fb.group({
-      'nombre' :[null,Validators.required],
-      'descripcion':[null,Validators.required]
-  })
+    private uploadService: UploadFileSimpleService,
+    private toastyService: ToastyService
+  ) {}
+
+  ngOnInit() {}
+
+  fileChange(event) {
+    const filesList: FileList = event.target.files;
+    console.log("fileChange() -> filesList", filesList);
   }
 
-  ngOnInit() {
-  }
+  submitForm(form: NgForm) {
+    console.log("this.model", this.model);
+    console.log("form.value", form.value);
 
+    const fileInput: HTMLInputElement = this.screenshotInput.nativeElement;
+    console.log("fileInput.files", fileInput.files);
+
+    this.uploadService
+      .postTicket(this.model, fileInput.files)
+      .subscribe(data => {
+        console.log("success: ", data);
+        this.toastyService.success(
+          <ToastOptions>{
+            title: "Success!",
+            msg:
+              "Your ticket has been submitted successfully and will be resolved shortly!",
+            theme: "bootstrap",
+            showClose: true,
+            timeout: 15000
+          }
+        );
+      });
+  }
 }

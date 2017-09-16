@@ -14,5 +14,12 @@ export class BordadoService{
                     return response.json()
                 })
 }
+createBordado(data){
+	console.log(data)
+	return this.http.post(this.bordadosUrl,data)
+		    .map(response=>{
+		    	return response.json()
+		    })
+}
 
 }
