@@ -1,13 +1,15 @@
-import { ToastyService, ToastOptions } from "ng2-toasty";
+    import { ToastsManager } from 'ng2-toastr/ng2-toastr';
 import { NgForm } from "@angular/forms";
-import { Component, OnInit, ViewChild, ElementRef } from "@angular/core";
+import { Component, OnInit, ViewChild, ElementRef,ViewContainerRef } from "@angular/core";
 import { Ticket } from "./../ticket";
 import { UploadFileSimpleService } from "./../services/upload-file-with-progress-bar.service";
+import { Router, ActivatedRoute} from '@angular/router';
+
 
 @Component({
   selector: "app-upload-file-simple",
   templateUrl: "./create-bordado.component.html",
-  styleUrls: ["./create-bordado.component.css"],
+  styleUrls: ["./create-bordado.component.scss"],
   providers:[UploadFileSimpleService]
 })
 export class CreateBordadoComponent implements OnInit {
@@ -16,8 +18,10 @@ export class CreateBordadoComponent implements OnInit {
 
   constructor(
     private uploadService: UploadFileSimpleService,
-    private toastyService: ToastyService,
-  ) {}
+    public toastr: ToastsManager, vcr: ViewContainerRef,
+    private _router: Router,
+    private route: ActivatedRoute
+  ) {this.toastr.setRootViewContainerRef(vcr);}
 
   ngOnInit() {}
 
@@ -37,16 +41,17 @@ export class CreateBordadoComponent implements OnInit {
       .postTicket(this.model, fileInput.files)
       .subscribe(data => {
         console.log("success: ", data);
-        this.toastyService.success(
-          <ToastOptions>{
-            title: "Success!",
-            msg:
-              "Your ticket has been submitted successfully and will be resolved shortly!",
-            theme: "bootstrap",
-            showClose: true,
-            timeout: 15000
-          }
-        );
-      });
+        this.showSuccess()
+        setTimeout(() => {
+                   this._router.navigate(['/cards']);
+                 },500);
+      },(errRes) =>{this.showError()});
   }
+      showSuccess() {
+        this.toastr.success('Entry created!', 'Success!');
+      }
+
+      showError() {
+        this.toastr.error('Something went wrong.Retry!', 'Oops!');
+      }
 }

@@ -1,6 +1,6 @@
 import { Routes, RouterModule } from '@angular/router';
 import { HttpClientModule } from "@angular/common/http";
-import {ToastyModule} from 'ng2-toasty';
+import {ToastModule} from 'ng2-toastr/ng2-toastr';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -48,8 +48,7 @@ import { CreateBordadoComponent } from './components/create-bordado/create-borda
     MdInputModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    ToastyModule.forRoot(),
-
+    ToastModule.forRoot()
 
   ],
 
