@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {BordadoService} from '../services/bordado-service.service'
+import {BordadoService} from '../services/bordado-service.service';
+import { Lightbox } from 'angular2-lightbox';
 
 @Component({
   selector: 'app-imagecard',
@@ -9,15 +10,20 @@ import {BordadoService} from '../services/bordado-service.service'
 })
 export class ImagecardComponent implements OnInit {
 
-   private bordados
-  constructor(private bordadoService:BordadoService) { }
+  private bordados = [];
+  constructor(private bordadoService:BordadoService,
+              private _lightbox: Lightbox) {
+    }
 
   ngOnInit() {
       this.bordadoService.getBordados()
             .subscribe(bordado=>{
                 this.bordados = bordado
-                console.log(this.bordados)
-            })
-  }
+                })
+           }
 
+   open(index: number): void {
+    // open lightbox
+    this._lightbox.open(this.bordados, index);
+  }
 }

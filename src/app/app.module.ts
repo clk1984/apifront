@@ -1,6 +1,7 @@
 import { Routes, RouterModule } from '@angular/router';
 import { HttpClientModule } from "@angular/common/http";
 import {ToastModule} from 'ng2-toastr/ng2-toastr';
+import { LightboxModule } from 'angular2-lightbox';
 
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -41,6 +42,7 @@ import { CreateBordadoComponent } from './components/create-bordado/create-borda
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
+     LightboxModule,
     RouterModule.forRoot(
       routes    ),
     AlertModule.forRoot(),
