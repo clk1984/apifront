@@ -1,17 +1,20 @@
 <app-nav></app-nav>
 <div class="d-flex  justify-content-center ">
+
+    <hr>
  <div *ngFor="let item of bordados; let i=index">
   <div class="card ">
       <h4 class="card-title">{{item.name}}</h4>
+
     <img class="card-img-top" src="http://laravel.example.com{{item.resizedpath}}" (click)="open(i)" alt="Card image cap">
     <div class="card-block">
       <p class="card-text">{{item.description}}</p>
       <p class="card-footer">
         <small class="text-muted">Uploaded by {{item.user.name}}
         </small>
-         <img src="assets/unlike.png"  class="like pull-right" alt="">
+         <img [src]="item.liked ? 'assets/like.png' : myImgUrl" (click)="like($event,item.id)" class="like pull-right" alt="">
      </p>
-    </div>
+   </div>
   </div>
   </div>
  </div>

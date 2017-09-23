@@ -14,12 +14,27 @@ export class BordadoService{
                     return response.json()
                 })
 }
+
 createBordado(data){
-	console.log(data)
 	return this.http.post(this.bordadosUrl,data)
 		    .map(response=>{
 		    	return response.json()
 		    })
 }
 
+like(bordadoid,userId){
+    return this.http.post(this.bordadosUrl+'/'+bordadoid+'/like',{'userId': userId})
+                .share()
+                .map(response=>{
+                    return response.json()
+                })
+}
+
+unlike(bordadoid,userId){
+ return this.http.post(this.bordadosUrl+'/'+bordadoid+'/unlike',{'userId': userId})
+                .share()
+                .map(response=>{
+                    return response.json()
+                })
+        }
 }

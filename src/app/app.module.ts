@@ -52,7 +52,7 @@ import { CreateBordadoComponent } from './components/create-bordado/create-borda
     HttpClientModule,
     ToastModule.forRoot()
 
-  ],
+    ],
 
   bootstrap: [AppComponent]
 })
