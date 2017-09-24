@@ -4,6 +4,7 @@ import {
   HttpErrorResponse
 } from "@angular/common/http";
 import { Injectable } from "@angular/core";
+import { Http,RequestOptions,Headers } from "@angular/http";
 import { Observable } from "rxjs/Observable";
 
 import { Ticket } from "../ticket";
@@ -11,8 +12,9 @@ import { Ticket } from "../ticket";
 @Injectable()
 export class UploadFileSimpleService {
   private baseUrl = "http://laravel.example.com/api/bordados";
-
+  private options:RequestOptions
   constructor(private http: HttpClient) {}
+
 
   postTicket(ticket: Ticket, filesList: FileList): Observable<any> {
     if (!filesList || filesList.length === 0) {
@@ -30,8 +32,11 @@ export class UploadFileSimpleService {
     for (let i = 0; i < filesList.length; i++) {
       formData.append(filesList[i].name, filesList[i]);
     }
+  let token:string = window.localStorage.getItem('token');
+   const headers = new HttpHeaders().set("Accept", "application/json");
+   headers.set('Authorization', 'Bearer '+ token);
 
-    const headers = new HttpHeaders().set("Accept", "application/json");
+
     return this.http
       .post(`${this.baseUrl}`, formData, { headers: headers })
       .map(response => response || {})

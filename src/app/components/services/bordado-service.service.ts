@@ -1,15 +1,24 @@
 import { Injectable } from '@angular/core'
-import {Http} from '@angular/http'
+import {Http,RequestOptions,Headers} from '@angular/http'
 
 @Injectable()
 export class BordadoService{
-
-  constructor(private http:Http) { }
-
  private bordadosUrl = 'http://laravel.example.com/api/bordados'
+private options:RequestOptions
+
+ constructor(private http:Http) { }
+
+createAuthorizationHeader(headers: Headers) {
+   let token:string = window.localStorage.getItem('token');
+   headers.append( 'Accept', 'application/json' );
+   headers.append('Authorization', 'Bearer '+ token);
+   this.options = new RequestOptions({ headers: headers });
+  }
 
  getBordados(){
-    return this.http.get(this.bordadosUrl)
+   let headers = new Headers();
+   this.createAuthorizationHeader(headers)
+   return this.http.get(this.bordadosUrl,this.options)
                 .map(response=>{
                     return response.json()
                 })

@@ -1,3 +1,12 @@
 .like{
     height: 25px;
 }
+.contenedor{
+	    flex-wrap: wrap;
+
+}
+.imagen{
+	  padding: 5px;
+	  flex-grow: 1;
+    	width: 25%;
+	}

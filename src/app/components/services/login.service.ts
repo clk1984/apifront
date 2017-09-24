@@ -11,9 +11,9 @@ export class LoginService {
 
 
  Login(data){
- 	  let headers = new Headers({ 'Accept': 'application/json' });
-     let options = new RequestOptions({ headers: headers });
-    return this.http.post(this.loginUrl,data,options)
+    let headers = new Headers({ 'Accept': 'application/json' });
+    let options = new RequestOptions({ headers: headers });
+      return this.http.post(this.loginUrl,data,options)
                      .map(resp => resp.json() );
  }
  register(data){
