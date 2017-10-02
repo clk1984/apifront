@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {BordadoService} from '../services/bordado-service.service';
 import { Lightbox } from 'angular2-lightbox';
 import {MdButtonToggleModule} from '@angular/material';
+import { Router, ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-imagecard',
@@ -16,14 +17,17 @@ export class ImagecardComponent implements OnInit {
   myImgUrl:string='/assets/unlike.png';
 
   constructor(private bordadoService:BordadoService,
-              private _lightbox: Lightbox) {
+              private _lightbox: Lightbox,
+              private _router: Router,
+              private route: ActivatedRoute,) {
     }
 
   ngOnInit() {
       this.bordadoService.getBordados()
             .subscribe(bordado=>{
                 this.bordados = bordado
-                this.authUserId = bordado[0].auth_user.id;
+                console.log(bordado[0])
+                this.authUserId = bordado[0].auth_user;
                 bordado.forEach(bor=>{
                   bor.likes.forEach(like=>{
                     if(like.user_id == this.authUserId){
@@ -31,6 +35,10 @@ export class ImagecardComponent implements OnInit {
                       }
                   })
               })
+           },
+           error=>{
+              this._router.navigate(['/login']);
+              alert('rea')
            })
           }
 

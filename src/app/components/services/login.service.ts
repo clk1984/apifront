@@ -21,6 +21,7 @@ export class LoginService {
      let options = new RequestOptions({ headers: headers });
      return this.http.post(this.registerUrl,data,options)
                      .map(resp=>resp.json())
+                     .share()
                       }
 
  get(url:string, hdrs?:Object) {

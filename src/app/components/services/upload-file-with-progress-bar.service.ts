@@ -33,8 +33,8 @@ export class UploadFileSimpleService {
       formData.append(filesList[i].name, filesList[i]);
     }
   let token:string = window.localStorage.getItem('token');
-   const headers = new HttpHeaders().set("Accept", "application/json");
-   headers.set('Authorization', 'Bearer '+ token);
+   const headers = new HttpHeaders().set("Accept", "application/json")
+                                    .set('Authorization', 'Bearer '+ token)
 
 
     return this.http

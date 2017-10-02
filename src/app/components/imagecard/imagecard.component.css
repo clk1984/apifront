@@ -5,8 +5,11 @@
 	    flex-wrap: wrap;
 
 }
+.card-text{
+     padding-top: 5px;
+}
 .imagen{
 	  padding: 5px;
-	  flex-grow: 1;
+	  /*flex-grow: 1;*/
     	width: 25%;
 	}

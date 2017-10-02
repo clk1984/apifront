@@ -32,7 +32,6 @@ export class RegisterComponent implements OnInit {
   ngOnInit() {
   }
   submitRegister(value:any){
-    console.log(value)
      this.loginService.register(value)
            .subscribe(data=>{
              console.log(data)
