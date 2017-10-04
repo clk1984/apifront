@@ -20,6 +20,7 @@ import { FileSelectDirective } from 'ng2-file-upload';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { AlertModule,CollapseModule } from 'ngx-bootstrap';
 import { CreateBordadoComponent } from './components/create-bordado/create-bordado.component';
+import { BordadosLikedComponent } from './components/bordados-liked/bordados-liked.component';
 
 
 @NgModule({
@@ -34,6 +35,8 @@ import { CreateBordadoComponent } from './components/create-bordado/create-borda
     NavbarComponent,
 
     CreateBordadoComponent,
+
+    BordadosLikedComponent,
   ],
   imports: [
     BrowserModule,

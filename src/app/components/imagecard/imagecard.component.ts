@@ -37,8 +37,7 @@ export class ImagecardComponent implements OnInit {
               })
            },
            error=>{
-              this._router.navigate(['/login']);
-              alert('rea')
+
            })
           }
 
