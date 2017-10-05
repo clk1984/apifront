@@ -21,6 +21,7 @@ import { NavbarComponent } from './components/navbar/navbar.component';
 import { AlertModule,CollapseModule } from 'ngx-bootstrap';
 import { CreateBordadoComponent } from './components/create-bordado/create-bordado.component';
 import { BordadosLikedComponent } from './components/bordados-liked/bordados-liked.component';
+import { BordadosUserComponent } from './components/bordados-user/bordados-user.component';
 
 
 @NgModule({
@@ -37,6 +38,9 @@ import { BordadosLikedComponent } from './components/bordados-liked/bordados-lik
     CreateBordadoComponent,
 
     BordadosLikedComponent,
+
+
+    BordadosUserComponent,
   ],
   imports: [
     BrowserModule,

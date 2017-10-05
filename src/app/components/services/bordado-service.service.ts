@@ -22,12 +22,12 @@ createAuthorizationHeader(headers: Headers) {
    this.options = new RequestOptions({ headers: headers });
   }
 
- getBordados(){
+getBordados(){
    let headers = new Headers();
    this.createAuthorizationHeader(headers)
    return this.http.get(this.bordadosUrl,this.options)
                 .map(response=>{
-                    return response.json()
+                    return response.json().response
                 })
                .catch(this.handleError);
 
@@ -72,6 +72,15 @@ unlike(bordadoid,userId){
                 })
         }
 
+getBordadoByUserId(userId){
+   let headers = new Headers();
+   this.createAuthorizationHeader(headers)
+   return this.http.get(this.bordadosUrl+'/'+userId,this.options)
+                .map(response=>{
+                    return response.json().response
+                })
+               .catch(this.handleError);
+}
 handleError(error:any) {
           let errMsg = (error.message) ? error.message :
             error.status ? `${error.status} - ${error.statusText}` : 'Server error';

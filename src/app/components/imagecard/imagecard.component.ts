@@ -25,19 +25,20 @@ export class ImagecardComponent implements OnInit {
   ngOnInit() {
       this.bordadoService.getBordados()
             .subscribe(bordado=>{
+              console.log(bordado)
                 this.bordados = bordado
-                console.log(bordado[0])
                 this.authUserId = bordado[0].auth_user;
                 bordado.forEach(bor=>{
                   bor.likes.forEach(like=>{
                     if(like.user_id == this.authUserId){
+                        console.log('si')
                         bor.liked = true
                       }
                   })
               })
+                console.log(this.bordados)
            },
            error=>{
-
            })
           }
 
@@ -52,7 +53,7 @@ export class ImagecardComponent implements OnInit {
             .subscribe()
 
         e.target.src='http://localhost:4200/assets/unlike.png'
-    }else{
+          }else{
         e.target.src='http://localhost:4200/assets/like.png'
         this.bordadoService.like(bordadoid,this.authUserId)
             .subscribe()

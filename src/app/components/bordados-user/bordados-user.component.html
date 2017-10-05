@@ -1,7 +1,7 @@
 <app-nav></app-nav>
 <div class="d-flex  justify-content-center contenedor ">
 
- <div *ngFor="let item of bordados; let i=index" class="imagen">
+ <div *ngFor="let item of bordado; let i=index" class="imagen">
   <div class="card ">
       <h4 class="card-title text-center">{{item.name}}</h4>
 
@@ -13,7 +13,7 @@
         <small class="text-muted">Uploaded by
           <a routerLink="/bordados/{{item.user.id}}" routerLinkActive="active" >{{item.user.name}}</a>
         </small>
-         <img [src]="item.liked ? 'assets/like.png' : myImgUrl" (click)="like($event,item.id)" class="like pull-right" alt="">
+     <img [src]="item.liked ? 'assets/like.png' : myImgUrl" (click)="like($event,item.id)" class="like pull-right" alt="">
      </p>
    </div>
   </div>
