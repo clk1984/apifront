@@ -25,6 +25,7 @@
     "@angular/router": "^4.0.0",
     "@angular2-material/input": "^2.0.0-alpha.8-3",
     "@ng-bootstrap/ng-bootstrap": "^1.0.0-beta.4",
+    "angular2-jwt": "^0.2.3",
     "angular2-lightbox": "^1.2.0",
     "blueimp-canvas-to-blob": "^3.14.0",
     "bootstrap": "^3.3.7",

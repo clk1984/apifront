@@ -4,7 +4,7 @@ import {Observable} from 'rxjs/Observable';
 import { Router, ActivatedRoute} from '@angular/router';
 import 'rxjs/add/operator/map'
 import 'rxjs/add/operator/share'
-
+import { AuthHttp } from 'angular2-jwt';
 
 @Injectable()
 export class BordadoService{
@@ -13,7 +13,8 @@ private options:RequestOptions
 
  constructor(private http:Http,
                    private _router: Router,
-                  private route: ActivatedRoute) { }
+                  private route: ActivatedRoute,
+                  public authHttp: AuthHttp) { }
 
 createAuthorizationHeader(headers: Headers) {
    let token:string = window.localStorage.getItem('token');
@@ -25,7 +26,7 @@ createAuthorizationHeader(headers: Headers) {
 getBordados(){
    let headers = new Headers();
    this.createAuthorizationHeader(headers)
-   return this.http.get(this.bordadosUrl,this.options)
+   return this.authHttp.get(this.bordadosUrl)
                 .map(response=>{
                     return response.json().response
                 })
@@ -85,7 +86,7 @@ handleError(error:any) {
           let errMsg = (error.message) ? error.message :
             error.status ? `${error.status} - ${error.statusText}` : 'Server error';
             console.error(errMsg); // log to console instead
-             this._router.navigate(['/login'])
+            this._router.navigate(['/login'])
             return Observable.of(error);
     }
 

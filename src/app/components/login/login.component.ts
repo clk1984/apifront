@@ -34,8 +34,8 @@ export class LoginComponent {
     this.loginService.Login(value)
         .subscribe(data=>{
           console.log(data)
-           window.localStorage.setItem('user',data.success.name);
-           window.localStorage.setItem('token',data.success.token );
+           window.sessionStorage.setItem('user',data.success.name.name);
+           window.sessionStorage.setItem('token',data.success.token );
                 setTimeout(() => {
                    this._router.navigate(['/cards']);
                  },500);

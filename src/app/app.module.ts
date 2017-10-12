@@ -10,7 +10,7 @@ import { AppComponent } from './app.component';
 import { ImagecardComponent } from './components/imagecard/imagecard.component';
 import {MdInputModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-
+import {AuthModule} from './auth/auth/auth.module'
 import { NavComponent } from './components/nav/nav.component';
 import { routes,AppRoutingModule } from './app.routing';
 import { LoginComponent } from './components/login/login.component';
@@ -22,6 +22,9 @@ import { AlertModule,CollapseModule } from 'ngx-bootstrap';
 import { CreateBordadoComponent } from './components/create-bordado/create-bordado.component';
 import { BordadosLikedComponent } from './components/bordados-liked/bordados-liked.component';
 import { BordadosUserComponent } from './components/bordados-user/bordados-user.component';
+import { AuthHttp } from 'angular2-jwt';
+import {AuthGuard} from './auth/auth/auth-guard.service';
+import {AuthService} from './auth/auth/auth.service';
 
 
 @NgModule({
@@ -57,10 +60,12 @@ import { BordadosUserComponent } from './components/bordados-user/bordados-user.
     MdInputModule,
     BrowserAnimationsModule,
     HttpClientModule,
-    ToastModule.forRoot()
+    ToastModule.forRoot(),
+    AuthModule
 
     ],
 
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
+  providers:[AuthGuard,AuthService]
 })
 export class AppModule { }
