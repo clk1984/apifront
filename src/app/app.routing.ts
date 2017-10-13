@@ -17,7 +17,7 @@ export const routes:Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'create', component: CreateBordadoComponent, canActivate:[AuthGuard] },
   { path: 'liked', component: BordadosLikedComponent },
-  { path: 'bordados/:id', component: BordadosUserComponent },
+  { path: 'bordados/:id', component: BordadosUserComponent,canActivate:[AuthGuard] },
   { path: '',
     redirectTo: '/login',
     pathMatch: 'full'

@@ -2,7 +2,6 @@ import { Routes, RouterModule } from '@angular/router';
 import { HttpClientModule } from "@angular/common/http";
 import {ToastModule} from 'ng2-toastr/ng2-toastr';
 import { LightboxModule } from 'angular2-lightbox';
-
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
@@ -17,7 +16,6 @@ import { LoginComponent } from './components/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { RegisterComponent } from './components/register/register.component';
 import { FileSelectDirective } from 'ng2-file-upload';
-import { NavbarComponent } from './components/navbar/navbar.component';
 import { AlertModule,CollapseModule } from 'ngx-bootstrap';
 import { CreateBordadoComponent } from './components/create-bordado/create-bordado.component';
 import { BordadosLikedComponent } from './components/bordados-liked/bordados-liked.component';
@@ -36,7 +34,6 @@ import {AuthService} from './auth/auth/auth.service';
     LoginComponent,
     RegisterComponent,
 
-    NavbarComponent,
 
     CreateBordadoComponent,
 
