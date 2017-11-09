@@ -2,8 +2,9 @@
     height: 25px;
 }
 .contenedor{
-        flex-wrap: wrap;
-
+	    flex-wrap: wrap;
+        margin-right: 10%;
+        margin-left: 10%;
 }
 .card-text{
      padding-top: 5px;
@@ -11,5 +12,7 @@
 .imagen{
       padding: 5px;
       /*flex-grow: 1;*/
-        width: 25%;
-    }
+        width: 20%;
+        border-radius: 25%;
+        border:2px #6D9472;
+	}

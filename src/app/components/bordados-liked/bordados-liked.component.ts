@@ -15,6 +15,7 @@ export class BordadosLikedComponent implements OnInit {
   myImgUrl:string='/assets/unlike.png';
   authUserId:string
   url = AppSettings.FRONT_ENDPOINT +'/'
+  imageUrl= AppSettings.BACK_ENDPOINT
   constructor(private bordadoService:BordadoService,
               private _lightbox: Lightbox,
               private _router: Router,

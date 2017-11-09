@@ -23,6 +23,8 @@ import { BordadosUserComponent } from './components/bordados-user/bordados-user.
 import { AuthHttp } from 'angular2-jwt';
 import {AuthGuard} from './auth/auth/auth-guard.service';
 import {AuthService} from './auth/auth/auth.service';
+import {MatMenuModule} from '@angular/material/menu';
+import {MatIconModule} from '@angular/material/icon';
 
 
 @NgModule({
@@ -58,8 +60,9 @@ import {AuthService} from './auth/auth/auth.service';
     BrowserAnimationsModule,
     HttpClientModule,
     ToastModule.forRoot(),
-    AuthModule
-
+    AuthModule,
+    MatMenuModule,
+    MatIconModule
     ],
 
   bootstrap: [AppComponent],
