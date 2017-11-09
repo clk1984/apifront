@@ -16,7 +16,8 @@ export class ImagecardComponent implements OnInit {
   private authUserId:number
   private bordados = [];
   myImgUrl:string='/assets/unlike.png';
-  url = AppSettings.BACK_ENDPOINT 
+  url = AppSettings.FRONT_ENDPOINT 
+  imageUrl = AppSettings.BACK_ENDPOINT
   constructor(private bordadoService:BordadoService,
               private _lightbox: Lightbox,
               private _router: Router,
@@ -49,13 +50,13 @@ export class ImagecardComponent implements OnInit {
 
   like(e,bordadoid){
 
-    if(e.target.src==AppSettings.API_ENDPOINT + '/assets/like.png'){
+    if(e.target.src==AppSettings.FRONT_ENDPOINT + '/assets/like.png'){
         this.bordadoService.unlike(bordadoid,this.authUserId)
             .subscribe()
 
-        e.target.src=AppSettings.API_ENDPOINT + '/assets/unlike.png'
+        e.target.src=AppSettings.FRONT_ENDPOINT + '/assets/unlike.png'
           }else{
-        e.target.src=AppSettings.API_ENDPOINT + '/assets/like.png'
+        e.target.src=AppSettings.FRONT_ENDPOINT + '/assets/like.png'
         this.bordadoService.like(bordadoid,this.authUserId)
             .subscribe()
     }
