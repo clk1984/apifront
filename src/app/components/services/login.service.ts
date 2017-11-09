@@ -2,11 +2,12 @@ import { Injectable } from '@angular/core';
 import { Http, Headers ,RequestOptions} from '@angular/http';
 import {Observable} from 'rxjs';
 import 'rxjs/add/operator/map';
+import { AppSettings } from '../../globals/appSettings'
 
 @Injectable()
 export class LoginService {
-  private loginUrl= 'http://laravel.example.com/api/login';
-  private registerUrl= 'http://laravel.example.com/api/register';
+  private loginUrl= AppSettings.API_ENDPOINT + '/login';
+  private registerUrl= AppSettings.API_ENDPOINT + '/register';
   constructor(private http:Http) { }
 
 

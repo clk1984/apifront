@@ -5,10 +5,11 @@ import { Router, ActivatedRoute} from '@angular/router';
 import 'rxjs/add/operator/map'
 import 'rxjs/add/operator/share'
 import { AuthHttp } from 'angular2-jwt';
+import { AppSettings } from '../../globals/appSettings'
 
 @Injectable()
 export class BordadoService{
-private bordadosUrl = 'http://laravel.example.com/api/bordados'
+private bordadosUrl = AppSettings.API_ENDPOINT+'/bordados'
 private options:RequestOptions
 
  constructor(private http:Http,

@@ -6,12 +6,11 @@ import {
 import { Injectable } from "@angular/core";
 import { Http,RequestOptions,Headers } from "@angular/http";
 import { Observable } from "rxjs/Observable";
-
 import { Ticket } from "../ticket";
-
+import { AppSettings } from '../../globals/appSettings'
 @Injectable()
 export class UploadFileSimpleService {
-  private baseUrl = "http://laravel.example.com/api/bordados";
+  private baseUrl = AppSettings.API_ENDPOINT + '/bordados'
   private options:RequestOptions
   constructor(private http: HttpClient) {}
 

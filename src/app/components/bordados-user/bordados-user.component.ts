@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {ActivatedRoute} from "@angular/router";
 import {BordadoService} from '../services/bordado-service.service';
 import { Lightbox } from 'angular2-lightbox';
+import { AppSettings } from '../../globals/appSettings';
 
 @Component({
   selector: 'app-bordados-user',
@@ -15,7 +16,7 @@ export class BordadosUserComponent implements OnInit {
   authUserId :number
   bordado:any
   myImgUrl:string='/assets/unlike.png';
-
+  url = AppSettings.API_ENDPOINT + '/'
   constructor(private route: ActivatedRoute,
               private bordadoService: BordadoService,
               private _lightbox: Lightbox,
@@ -45,13 +46,13 @@ export class BordadosUserComponent implements OnInit {
 
   like(e,bordadoid){
 
-    if(e.target.src=='http://localhost:4200/assets/like.png'){
+    if(e.target.src==AppSettings.API_ENDPOINT + '/assets/like.png'){
         this.bordadoService.unlike(bordadoid,this.authUserId)
             .subscribe()
 
-        e.target.src='http://localhost:4200/assets/unlike.png'
+        e.target.src=AppSettings.API_ENDPOINT + '/assets/unlike.png'
           }else{
-        e.target.src='http://localhost:4200/assets/like.png'
+        e.target.src=AppSettings.API_ENDPOINT + '/assets/like.png'
         this.bordadoService.like(bordadoid,this.authUserId)
             .subscribe()
     }

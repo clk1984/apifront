@@ -7,7 +7,7 @@ import { NgModule } from '@angular/core';
 import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
 import { ImagecardComponent } from './components/imagecard/imagecard.component';
-import {MdInputModule} from '@angular/material';
+import {MatInputModule} from '@angular/material';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {AuthModule} from './auth/auth/auth.module'
 import { NavComponent } from './components/nav/nav.component';
@@ -54,7 +54,7 @@ import {AuthService} from './auth/auth/auth.service';
       routes    ),
     AlertModule.forRoot(),
     CollapseModule,
-    MdInputModule,
+    MatInputModule,
     BrowserAnimationsModule,
     HttpClientModule,
     ToastModule.forRoot(),

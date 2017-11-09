@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import {BordadoService} from '../services/bordado-service.service'
 import { Lightbox } from 'angular2-lightbox';
-import {MdButtonToggleModule} from '@angular/material';
+import {MatButtonToggleModule} from '@angular/material';
 import { Router, ActivatedRoute} from '@angular/router';
-
+import { AppSettings } from '../../globals/appSettings'
 @Component({
   selector: 'app-bordados-liked',
   templateUrl: './bordados-liked.component.html',
@@ -14,7 +14,7 @@ export class BordadosLikedComponent implements OnInit {
   likedBordados:any
   myImgUrl:string='/assets/unlike.png';
   authUserId:string
-
+  url = AppSettings + '/'
   constructor(private bordadoService:BordadoService,
               private _lightbox: Lightbox,
               private _router: Router,
@@ -41,13 +41,13 @@ export class BordadosLikedComponent implements OnInit {
 
   like(e,bordadoid){
 
-    if(e.target.src=='http://localhost:4200/assets/like.png'){
+    if(e.target.src==AppSettings.API_ENDPOINT + '/assets/like.png'){
         this.bordadoService.unlike(bordadoid,this.authUserId)
             .subscribe()
 
-        e.target.src='http://localhost:4200/assets/unlike.png'
+        e.target.src=AppSettings.API_ENDPOINT + '/assets/unlike.png'
           }else{
-        e.target.src='http://localhost:4200/assets/like.png'
+        e.target.src=AppSettings.API_ENDPOINT + '/assets/like.png'
         this.bordadoService.like(bordadoid,this.authUserId)
             .subscribe()
     }
