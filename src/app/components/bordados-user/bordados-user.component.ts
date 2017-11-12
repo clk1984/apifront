@@ -16,7 +16,7 @@ export class BordadosUserComponent implements OnInit {
   authUserId :number
   bordado:any
   myImgUrl:string='/assets/unlike.png';
-  url = AppSettings.API_ENDPOINT + '/'
+  url = AppSettings.BACK_ENDPOINT
   constructor(private route: ActivatedRoute,
               private bordadoService: BordadoService,
               private _lightbox: Lightbox,
@@ -30,7 +30,9 @@ export class BordadosUserComponent implements OnInit {
                    .subscribe(bordado=>{
                        this.bordado=bordado
                        this.authUserId = bordado[0].auth_user;
-                       bordado.forEach(bor=>{
+                       this.bordado.forEach(bor=>{
+                         //add root url to file origin 
+                          bor.src = AppSettings.BACK_ENDPOINT + bor.src
                           bor.likes.forEach(like=>{
                             if(like.user_id == this.authUserId){
                                bor.liked = true
@@ -46,13 +48,13 @@ export class BordadosUserComponent implements OnInit {
 
   like(e,bordadoid){
 
-    if(e.target.src==AppSettings.API_ENDPOINT + '/assets/like.png'){
+    if(e.target.src==AppSettings.FRONT_ENDPOINT + '/assets/like.png'){
         this.bordadoService.unlike(bordadoid,this.authUserId)
             .subscribe()
 
-        e.target.src=AppSettings.API_ENDPOINT + '/assets/unlike.png'
+        e.target.src=AppSettings.FRONT_ENDPOINT + '/assets/unlike.png'
           }else{
-        e.target.src=AppSettings.API_ENDPOINT + '/assets/like.png'
+        e.target.src=AppSettings.FRONT_ENDPOINT + '/assets/like.png'
         this.bordadoService.like(bordadoid,this.authUserId)
             .subscribe()
     }

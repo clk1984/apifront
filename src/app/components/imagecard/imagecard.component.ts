@@ -27,10 +27,11 @@ export class ImagecardComponent implements OnInit {
   ngOnInit() {
       this.bordadoService.getBordados()
             .subscribe(bordado=>{
-              console.log(bordado)
                 this.bordados = bordado
                 this.authUserId = bordado[0].auth_user;
-                bordado.forEach(bor=>{
+                this.bordados.forEach(bor=>{
+                //add root url to file origin 
+                  bor.src =AppSettings.BACK_ENDPOINT+bor.src //AppSettings.BACK_ENDPOINT + bor.src
                   bor.likes.forEach(like=>{
                     if(like.user_id == this.authUserId){
                         console.log('si')

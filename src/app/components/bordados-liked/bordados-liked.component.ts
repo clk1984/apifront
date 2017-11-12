@@ -28,13 +28,12 @@ export class BordadosLikedComponent implements OnInit {
   			{this.likedBordados=bor
          this.likedBordados.forEach(bordados=>{
            bordados.liked= true
+           bordados.src = AppSettings.BACK_ENDPOINT + bordados.src
          })
          if (bor.length > 0) {
-             this.authUserId = bor[0].auth_user;
-
+             this.authUserId = bor[0].auth_user
          }
-
-          console.log(bor.length)})
+       })
   }
     open(index: number): void {
     this._lightbox.open(this.likedBordados, index);

@@ -1,3 +1,5 @@
+// This class checks if user is authenticated using auth.service
+//if not redirect to login
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import { CanActivate } from '@angular/router';
